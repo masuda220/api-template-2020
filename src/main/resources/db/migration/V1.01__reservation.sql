@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS 予約.依頼 CASCADE;
+CREATE TABLE 予約.依頼
+(
+    識別番号 UUID PRIMARY KEY,
+    説明   VARCHAR(100) NOT NULL,
+    日付   DATE         NOT NULL,
+    開始時刻 TIME         NOT NULL,
+    登録日時 TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+COMMENT ON TABLE 予約.依頼 IS 'tour reservation request';

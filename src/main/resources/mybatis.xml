@@ -10,4 +10,5 @@
   <typeHandlers>
     <package name="example._configuration.mybatis"/>
   </typeHandlers>
+
 </configuration>

@@ -1,6 +1,7 @@
 package example.application.service;
 
 import example.application.repository.reservation.ReservationRepository;
+import example.domain.indentifier.RequestNumber;
 import example.domain.model.reservation.Request;
 import org.springframework.stereotype.Service;
 
@@ -19,16 +20,12 @@ public class ReservationService {
         reservationRepository.register(request);
     }
 
-    // TODO id should be ReservationNumber
-    public Request findBy(int id) {
-        return reservationRepository.findBy(id);
+    public Request findBy(RequestNumber requestNumber) {
+        return reservationRepository.findBy(requestNumber);
     }
 
     public List<Request> listAll() {
         return reservationRepository.listAll();
     }
 
-    public int requestNumber() {
-        return reservationRepository.requestNumber();
-    }
 }

@@ -4,45 +4,33 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="example.datasource.reservation.RequestMapper">
 
-  <resultMap id="request" type="example.domain.model.reservation.Request">
-    <id property="id" column="id"/>
-    <result property="remarks.value" column="remarks"/>
-    <result property="date" column="date"/>
-    <result property="startTime" column="start_time"/>
-  </resultMap>
-
-  <select id="requestNumber" resultType="int">
-    SELECT NEXTVAL('reservation.request_number');
+  <sql id="requestCore">
+    SELECT
+      識別番号 AS "requestNumber.value",
+      説明 AS "remarks.value",
+      日付 AS date,
+      開始時刻 AS startTime
+    FROM 予約.依頼
+  </sql>
+  <select id="findBy" resultType="example.domain.model.reservation.Request">
+   <include refid="requestCore"></include>
+    WHERE 識別番号 = #{value}
   </select>
 
-  <select id="findBy" resultMap="request">
-    SELECT
-     id,
-     remarks,
-     date,
-     start_time
-    FROM reservation.requests
-    WHERE id = #{id}
-  </select>
-
-  <select id="listAll" resultMap="request">
-    SELECT
-           id,
-           remarks,
-           date,
-           start_time
-    FROM reservation.requests
-    ORDER BY date DESC
+  <select id="listAll" resultType="example.domain.model.reservation.Request">
+    <include refid="requestCore"></include>
+    ORDER BY 日付 DESC
   </select>
 
   <insert id="register">
-    INSERT INTO reservation.requests
-        (id, remarks, date, start_time)
+    INSERT INTO 予約.依頼
+        (識別番号, 説明, 日付, 開始時刻)
     VALUES
     (
-       #{request.id}, #{request.remarks.value},
-       #{request.date},
-       #{request.startTime}
+       #{requestNumber.value},
+      #{remarks.value},
+       #{date},
+       #{startTime}
     )
     ;
   </insert>

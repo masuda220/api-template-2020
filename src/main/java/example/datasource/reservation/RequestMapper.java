@@ -1,18 +1,16 @@
 package example.datasource.reservation;
 
+import example.domain.indentifier.RequestNumber;
 import example.domain.model.reservation.Request;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 @Mapper
 public interface RequestMapper {
-    void register(@Param("request") Request request);
+    void register(Request request);
 
-    Request findBy(@Param("id") int id);
+    Request findBy(RequestNumber requestNumber);
 
     List<Request> listAll();
-
-    int requestNumber();
 }
