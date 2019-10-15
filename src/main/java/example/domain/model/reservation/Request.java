@@ -6,6 +6,9 @@ import example.domain.type.Remarks;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * 予約の依頼
+ */
 public class Request {
     RequestNumber requestNumber;
     Remarks remarks;

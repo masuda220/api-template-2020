@@ -2,6 +2,9 @@ package example.domain.indentifier;
 
 import java.util.UUID;
 
+/**
+ * 予約番号
+ */
 public class RequestNumber {
     UUID value;
 
