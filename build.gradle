@@ -11,11 +11,14 @@ version '1.0-SNAPSHOT'
 jigReports.dependsOn(clean, compileJava, processResources)
 bootRun.mustRunAfter(clean)
 
-sourceCompatibility = 1.8
-targetCompatibility = '1.8'
+sourceCompatibility = 11
+targetCompatibility = 11
 
 def defaultEncoding = 'UTF-8'
 
+[AbstractCompile, Javadoc].each {
+    tasks.withType(it).each { it.options.encoding = defaultEncoding }
+}
 
 sourceSets {
     main {
@@ -29,5 +32,17 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation platform('org.springframework.boot:spring-boot-dependencies:2.1.5.RELEASE')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+//    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+
+    implementation 'com.h2database:h2:1.4.196'
+    implementation 'org.postgresql:postgresql'
+
+    implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1")
+    implementation("org.flywaydb:flyway-core")
+
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    runtimeOnly 'io.springfox:springfox-swagger-ui:2.9.2'
+    implementation 'io.springfox:springfox-bean-validators:2.9.2'
 }
