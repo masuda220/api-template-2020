@@ -8,7 +8,7 @@
   </settings>
 
   <typeHandlers>
-    <package name="example._configuration.mybatis"/>
+    <package name="morecon._configuration.mybatis"/>
   </typeHandlers>
 
 </configuration>

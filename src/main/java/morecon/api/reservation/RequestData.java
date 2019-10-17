@@ -1,0 +1,24 @@
+package morecon.api.reservation;
+
+import morecon.domain.indentifier.RequestNumber;
+import morecon.domain.model.reservation.Request;
+import morecon.domain.type.Remarks;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public class RequestData {
+
+    @Valid
+    Remarks remarks;
+    @ApiModelProperty(example = "2011-11-12")
+    LocalDate date;
+    @ApiModelProperty(example = "13:55")
+    LocalTime startTime;
+
+    public Request asModel(RequestNumber requestNumber) {
+        return new Request(requestNumber, remarks, date, startTime);
+    }
+}
