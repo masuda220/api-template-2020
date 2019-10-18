@@ -1,8 +1,8 @@
 plugins {
     id 'java'
     id 'idea'
-    id 'org.springframework.boot' version '2.1.6.RELEASE'
-    id "org.dddjava.jig-gradle-plugin" version "2019.10.1"
+    id 'org.springframework.boot' version '2.1.9.RELEASE'
+    id "org.dddjava.jig-gradle-plugin" version "2019.10.2"
 }
 
 group 'template'
