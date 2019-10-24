@@ -5,10 +5,28 @@
 <mapper namespace="morecon.datasource.order.OrderMapper">
     <insert id="register">
         INSERT INTO 注文.注文
-            (識別番号, 購入者氏名)
+            (注文id, 購入者氏名)
         VALUES(
-            #{id},
-            #{order.purchaser.name}
+            #{orderId.value},
+            #{attempt.purchaser.name}
         );
     </insert>
+
+    <select id="newOrderId" resultType="Integer">
+        SELECT nextval('注文.注文id');
+    </select>
+
+<!--    <resultMap id="orderResultMap" type="morecon.domain.model.order.Order">-->
+<!--        <id column="注文id" property="orderId" />-->
+<!--        <result column="購入者氏名" property="purchaser.name" />-->
+<!--    </resultMap>-->
+    <select id="findBy" resultType="morecon.domain.model.order.Order">
+        SELECT
+            注文id as "orderId.value",
+            購入者氏名 as "purchaser.name"
+        FROM
+            注文.注文
+        WHERE
+            注文id = #{orderId.value}
+    </select>
 </mapper>

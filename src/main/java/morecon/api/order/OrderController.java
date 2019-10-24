@@ -16,7 +16,7 @@ public class OrderController {
     }
 
     @PostMapping("")
-    Order accept(@RequestBody Attempt attempt) {
-        return orderService.accept(attempt);
+    void accept(@RequestBody Attempt attempt) {
+        Order order = orderService.accept(attempt);
     }
 }
