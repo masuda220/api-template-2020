@@ -10,6 +10,15 @@
             #{orderId.value},
             #{attempt.purchaser.name}
         );
+        INSERT INTO 注文.お届け先
+            (注文id, 郵便番号, 住所, 電話番号, お届け先名)
+        VALUES(
+            #{orderId.value},
+            #{attempt.shipping.zipcode},
+            #{attempt.shipping.address},
+            #{attempt.shipping.tel},
+            #{attempt.shipping.name}
+        );
     </insert>
 
     <select id="newOrderId" resultType="Integer">
@@ -22,11 +31,18 @@
 <!--    </resultMap>-->
     <select id="findBy" resultType="morecon.domain.model.order.Order">
         SELECT
-            注文id as "orderId.value",
-            購入者氏名 as "purchaser.name"
+            注文.注文id as "orderId.value",
+            購入者氏名 as "purchaser.name",
+            郵便番号 as "shipping.zipcode",
+            住所 as "shipping.address",
+            電話番号 as "shipping.tel",
+            お届け先名 as "shipping.name"
         FROM
             注文.注文
+            LEFT JOIN
+                注文.お届け先
+                ON 注文.注文id = お届け先.注文id
         WHERE
-            注文id = #{orderId.value}
-    </select>
+            注文.注文id = #{orderId.value}
+</select>
 </mapper>

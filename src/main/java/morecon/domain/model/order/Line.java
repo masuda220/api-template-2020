@@ -2,6 +2,7 @@ package morecon.domain.model.order;
 
 import morecon.domain.model.product.Power;
 import morecon.domain.model.product.Product;
+import morecon.domain.model.product.UnitPrice;
 import morecon.domain.type.Quantity;
 
 /**
@@ -11,14 +12,16 @@ public class Line {
     Product product;
     Power power;
     Quantity quantity;
+    UnitPrice unitPrice;
 
     public Line() {
     }
 
-    public Line(Product product, Power power, Quantity quantity) {
+    public Line(Product product, Power power, Quantity quantity, UnitPrice unitPrice) {
         this.product = product;
         this.power = power;
         this.quantity = quantity;
+        this.unitPrice = unitPrice;
     }
 
     @Override
@@ -27,6 +30,7 @@ public class Line {
                 "product=" + product +
                 ", power=" + power +
                 ", quantity=" + quantity +
+                ", unitPrice=" + unitPrice +
                 '}';
     }
 }

@@ -3,6 +3,9 @@ package morecon.domain.model.product;
 public class UnitPrice {
     int value;
 
+    public UnitPrice() {
+    }
+
     public UnitPrice(int value) {
         this.value = value;
     }

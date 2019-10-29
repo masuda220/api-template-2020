@@ -7,7 +7,7 @@ import java.util.List;
  * 明細
  */
 public class Lines {
-    List<Line> list;
+    public List<Line> list;
 
     public Lines() {
         list = new ArrayList<>();
