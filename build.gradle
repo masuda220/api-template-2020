@@ -1,8 +1,8 @@
 plugins {
     id 'java'
     id 'idea'
-    id 'org.springframework.boot' version '2.1.6.RELEASE'
-    id "org.dddjava.jig-gradle-plugin" version "2019.10.1"
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id "org.dddjava.jig-gradle-plugin" version "2019.10.4"
 }
 
 group 'template'
@@ -32,14 +32,14 @@ repositories {
 }
 
 dependencies {
-    implementation platform('org.springframework.boot:spring-boot-dependencies:2.1.5.RELEASE')
+    implementation platform('org.springframework.boot:spring-boot-dependencies:2.2.0.RELEASE')
     implementation 'org.springframework.boot:spring-boot-starter-web'
-//    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 
-    implementation 'com.h2database:h2:1.4.196'
+//    implementation 'com.h2database:h2:1.4.196'
     implementation 'org.postgresql:postgresql'
 
-    implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1")
+    implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1")
     implementation("org.flywaydb:flyway-core")
 
     implementation 'io.springfox:springfox-swagger2:2.9.2'

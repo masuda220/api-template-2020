@@ -9,4 +9,12 @@ public class ApiFieldErrors {
     void addError(ApiFieldError error) {
         errors.add(error);
     }
+
+
+    @Override
+    public String toString() {
+        return "ApiFieldErrors{" +
+                "errors=" + errors +
+                '}';
+    }
 }

@@ -10,4 +10,14 @@ public class ApiFieldError {
         this.invalidValue = invalidValue;
         this.description = description;
     }
+
+
+    @Override
+    public String toString() {
+        return "ApiFieldError{" +
+                "field='" + field + '\'' +
+                ", invalidValue='" + invalidValue + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

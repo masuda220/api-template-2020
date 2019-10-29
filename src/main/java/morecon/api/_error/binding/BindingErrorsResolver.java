@@ -29,4 +29,11 @@ public class BindingErrorsResolver {
         return result;
     }
 
+
+    @Override
+    public String toString() {
+        return "BindingErrorsResolver{" +
+                "bindingResult=" + bindingResult +
+                '}';
+    }
 }

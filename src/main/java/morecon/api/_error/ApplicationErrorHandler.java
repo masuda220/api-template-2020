@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ControllerAdvice(basePackages = {"example.api"})
+@ControllerAdvice(basePackages = {"morecon.api"})
 public class ApplicationErrorHandler {
 
     static final Logger logger = LoggerFactory.getLogger(ApplicationErrorHandler.class);
