@@ -1,5 +1,6 @@
 package morecon.domain.model.order;
 
+import morecon.domain.indentifier.OrderLineId;
 import morecon.domain.model.product.Power;
 import morecon.domain.model.product.Product;
 import morecon.domain.model.product.UnitPrice;
@@ -9,6 +10,7 @@ import morecon.domain.type.Quantity;
  * 明細行
  */
 public class Line {
+    OrderLineId orderLineId;
     Product product;
     Power power;
     Quantity quantity;
@@ -27,7 +29,8 @@ public class Line {
     @Override
     public String toString() {
         return "Line{" +
-                "product=" + product +
+                "orderLineId=" + orderLineId +
+                ", product=" + product +
                 ", power=" + power +
                 ", quantity=" + quantity +
                 ", unitPrice=" + unitPrice +

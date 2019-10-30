@@ -28,4 +28,13 @@ public class OrderService {
         return orderRepository.findBy(newOrderId);
 
     }
+
+    public Order findBy(OrderId orderId) {
+        return orderRepository.findBy(orderId);
+    }
+
+    public List<Order> listAll(){
+        return orderRepository.listAll();
+    }
+
 }

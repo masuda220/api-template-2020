@@ -25,11 +25,7 @@
         SELECT nextval('注文.注文id');
     </select>
 
-<!--    <resultMap id="orderResultMap" type="morecon.domain.model.order.Order">-->
-<!--        <id column="注文id" property="orderId" />-->
-<!--        <result column="購入者氏名" property="purchaser.name" />-->
-<!--    </resultMap>-->
-    <select id="findBy" resultType="morecon.domain.model.order.Order">
+    <sql id="orderCore">
         SELECT
             注文.注文id as "orderId.value",
             購入者氏名 as "purchaser.name",
@@ -42,7 +38,26 @@
             LEFT JOIN
                 注文.お届け先
                 ON 注文.注文id = お届け先.注文id
+            INNER JOIN
+                注文.注文明細
+                ON 注文.注文id = 注文明細.注文id
+    </sql>
+
+    <select id="findBy" resultMap="orderResult">
+        <include refid="orderCore"></include>
         WHERE
             注文.注文id = #{orderId.value}
-</select>
+    </select>
+    <select id="listAll" resultMap="orderResult">
+        <include refid="orderCore"></include>
+    </select>
+
+    <resultMap type="morecon.domain.model.order.Order" id="orderResult">
+        <id column="注文id" property="orderId.value"/>
+        <collection property="lines" ofType="morecon.domain.model.order.Lines">
+            <collection property="list" javaType="ArrayList" ofType="morecon.domain.model.order.Line">
+                <result column="注文明細id" property="orderLineId.value"/>
+            </collection>
+        </collection>
+    </resultMap>
 </mapper>

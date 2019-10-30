@@ -40,4 +40,9 @@ public class OrderDatasource implements OrderRepository {
         return orderMapper.findBy(orderId);
     }
 
+    @Override
+    public List<Order> listAll() {
+        return orderMapper.listAll();
+    }
+
 }

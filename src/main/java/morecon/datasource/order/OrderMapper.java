@@ -13,4 +13,6 @@ public interface OrderMapper {
     void register(@Param("attempt") Attempt attempt, @Param("orderId") OrderId orderId);
     Integer newOrderId();
     Order findBy(@Param("orderId") OrderId orderId);
+    List<Order> listAll();
+
 }

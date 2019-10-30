@@ -10,4 +10,5 @@ public interface OrderRepository {
     void register(Attempt attempt, OrderId orderId);
     Integer newOrderId();
     Order findBy(OrderId orderId);
+    List<Order> listAll();
 }

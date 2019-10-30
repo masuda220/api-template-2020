@@ -13,6 +13,7 @@ COMMENT ON TABLE 注文.注文 IS '注文テーブル';
 
 CREATE TABLE 注文.注文明細
 (
+    注文明細ID SERIAL PRIMARY KEY,
     注文ID INTEGER NOT NULL,
     商品ID INTEGER NOT NULL,
     商品名 VARCHAR(255) NOT NULL,
