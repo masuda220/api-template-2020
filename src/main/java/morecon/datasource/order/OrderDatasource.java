@@ -37,7 +37,9 @@ public class OrderDatasource implements OrderRepository {
 
     @Override
     public Order findBy(OrderId orderId) {
-        return orderMapper.findBy(orderId);
+        Order result = orderMapper.findBy(orderId);
+        System.out.println(result);
+        return result;
     }
 
     @Override

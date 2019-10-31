@@ -5,10 +5,11 @@
 <mapper namespace="morecon.datasource.order.OrderMapper">
     <insert id="register">
         INSERT INTO 注文.注文
-            (注文id, 購入者氏名)
+            (注文id, 購入者氏名, メールアドレス)
         VALUES(
             #{orderId.value},
-            #{attempt.purchaser.name}
+            #{attempt.purchaser.name},
+            #{attempt.purchaser.email}
         );
         INSERT INTO 注文.お届け先
             (注文id, 郵便番号, 住所, 電話番号, お届け先名)
@@ -29,10 +30,18 @@
         SELECT
             注文.注文id as "orderId.value",
             購入者氏名 as "purchaser.name",
+            メールアドレス as "purchaser.email",
             郵便番号 as "shipping.zipcode",
             住所 as "shipping.address",
             電話番号 as "shipping.tel",
-            お届け先名 as "shipping.name"
+            お届け先名 as "shipping.name",
+            注文明細id as "lineId",
+            商品id as "product.id",
+            商品名 as "product.name",
+            商品コード as "product.productCode",
+            度数 as "power",
+            数量 as "quantity",
+            単価 as "unitPrice"
         FROM
             注文.注文
             LEFT JOIN
@@ -52,12 +61,23 @@
         <include refid="orderCore"></include>
     </select>
 
-    <resultMap type="morecon.domain.model.order.Order" id="orderResult">
-        <id column="注文id" property="orderId.value"/>
-        <collection property="lines" ofType="morecon.domain.model.order.Lines">
-            <collection property="list" javaType="ArrayList" ofType="morecon.domain.model.order.Line">
-                <result column="注文明細id" property="orderLineId.value"/>
-            </collection>
-        </collection>
+    <resultMap id="orderResult" type="morecon.domain.model.order.Order">
+        <id column="orderId.value" property="orderId.value" />
+        <result column="purchaser.name" property="purchaser.name"/>
+        <result column="purchaser.email" property="purchaser.email"/>
+        <result column="shipping.zipcode" property="shipping.zipcode"/>
+        <result column="shipping.address" property="shipping.address"/>
+        <result column="shipping.tel" property="shipping.tel"/>
+        <result column="shipping.name" property="shipping.name"/>
+        <collection property="lines.list" resultMap="line"></collection>
+    </resultMap>
+    <resultMap id="line" type="morecon.domain.model.order.Line">
+        <result column="lineId" property="orderLineId.value" />
+        <result column="product.id" property="product.id.value" />
+        <result column="product.name" property="product.name" />
+        <result column="product.productCode" property="product.productCode.value" />
+        <result column="power" property="power" />
+        <result column="quantity" property="quantity.value" />
+        <result column="unitPrice" property="unitPrice.value" />
     </resultMap>
 </mapper>

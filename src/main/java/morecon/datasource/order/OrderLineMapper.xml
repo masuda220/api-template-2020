@@ -5,12 +5,13 @@
 <mapper namespace="morecon.datasource.order.OrderLineMapper">
     <insert id="register">
         INSERT INTO 注文.注文明細
-            (注文id, 商品id, 商品名, 度数, 単価, 数量)
+            (注文id, 商品id, 商品名, 商品コード, 度数, 単価, 数量)
         VALUES(
             #{orderId.value},
             #{line.product.id.value},
             #{line.product.name},
-            #{line.power.label},
+            #{line.product.productCode.value},
+            #{line.power},
             #{line.unitPrice.value},
             #{line.quantity.value}
         );
