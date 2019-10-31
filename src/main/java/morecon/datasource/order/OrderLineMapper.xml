@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="morecon.datasource.order.OrderLineMapper">
+    <insert id="register">
+        INSERT INTO 注文.注文明細
+            (注文id, 商品id, 商品名, 商品コード, 度数, 単価, 数量)
+        VALUES(
+            #{orderId.value},
+            #{line.product.id.value},
+            #{line.product.name},
+            #{line.product.productCode.value},
+            #{line.power},
+            #{line.unitPrice.value},
+            #{line.quantity.value}
+        );
+    </insert>
+</mapper>

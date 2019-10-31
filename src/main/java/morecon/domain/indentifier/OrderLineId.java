@@ -1,18 +1,18 @@
-package morecon.domain.model.product;
+package morecon.domain.indentifier;
 
-public class UnitPrice {
+public class OrderLineId {
     int value;
 
-    public UnitPrice() {
+    public OrderLineId() {
     }
 
-    public UnitPrice(int value) {
+    public OrderLineId(int value) {
         this.value = value;
     }
 
     @Override
     public String toString() {
-        return "UnitPrice{" +
+        return "OrderLineId{" +
                 "value=" + value +
                 '}';
     }
