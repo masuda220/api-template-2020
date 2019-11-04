@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>ナビゲーション</title>
+</head>
+<body>
+<nav class="navbar is-danger" th:fragment="nav">
+  <div class="navbar-brand">
+    <a class="navbar-item" th:href="@{/}">
+      <span class="tag is-large">MORECONTACT</span>
+    </a>
+  </div>
+
+  <div class="navbar-start">
+    <a class="navbar-item" th:href="@{/products}">商品の一覧</a>
+  </div>
+  <div class="navbar-end">
+    <a class="navbar-item" th:href="@{/}">お買い物ガイド</a>
+    <a class="navbar-item" th:href="@{/}">登録・ログイン</a>
+  </div>
+</nav>
+</body>
+</html>

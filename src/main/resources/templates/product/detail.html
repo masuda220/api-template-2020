@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_parts/layout :: head(~{::title})">
+  <title>商品の詳細</title>
+</head>
+<body>
+<section class="section">
+  <nav th:replace="~{_parts/nav :: nav}"></nav>
+  <hr>
+  <!--/*@thymesVar id="product" type="morecon.domain.model.product.Product"*/-->
+  <div class="container">
+  <h4 class="title is-4" th:text="${product.name()}">商品A</h4>
+  <div>
+    <p th:text="${product.code()}">商品の詳細</p>
+  </div>
+  <form class="" method="post" th:action="@{/cart/add}">
+    <input type="hidden" name="productNumber" th:value="${product.id()}"/>
+    <input type="submit" value="カートに入れる"/>
+  </form>
+  </div>
+  <hr>
+  <div class="container">
+  <nav>
+    <a th:href="@{/products}">お買い物を続ける</a>
+    <a th:href="@{/cart}">カートを確認する</a>
+  </nav>
+  </div>
+</section>
+</body>
+</html>

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8"/>
-    <title>Top</title>
+<head th:replace="_parts/layout :: head(~{::title})">
+  <title>開発用のトップ画面</title>
 </head>
 <body>
-
+<section class="section">
+  <nav th:replace="~{_parts/nav :: nav}"></nav>
+  <hr>
+    <article class="message is-primary">
+        <div class="message-body">開発用のトップ画面</div>
+    </article>
+</section>
 </body>
 </html>

@@ -1,7 +1,5 @@
 package morecon.presentation;
 
-import example.application.service.ProductQueryService;
-import example.domain.model.product.Products;
 import morecon.application.service.ProductQueryService;
 import morecon.domain.model.product.Products;
 import org.springframework.stereotype.Controller;

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_parts/layout :: head(~{::title})">
+  <title>カート</title>
+</head>
+<body>
+<section class="section">
+  <nav th:replace="~{_parts/nav :: nav}"></nav>
+  <hr>
+  <div class="container">
+    <h3 class="title is-3">カート</h3>
+    <table class="table">
+      <thead>
+      <tr class="center aligned">
+        <th>商品番号</th>
+        <th>商品名</th>
+        <th>注文数</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="cartItem : ${cartItems.list()}">
+        <td th:text="${cartItem.product().id()}">1</td>
+        <td th:text="${cartItem.product().name()}">商品A</td>
+        <td>
+          <select>
+            <option th:text="${cartItem.quantity()}">10</option>
+          </select>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <form action="../order/confirm.html" th:action="@{/order/confirm}">
+      <input type="submit" value="注文確認画面へ"/>
+    </form>
+    <form method="post" action="#" th:action="@{/cart/reset}">
+      <input type="submit" value="カートを空にする"/>
+    </form>
+    <hr>
+    <nav>
+      <a href="../product/list.html" th:href="@{/products}">お買い物を続ける</a>
+    </nav>
+  </div>
+</section>
+</body>
+</html>

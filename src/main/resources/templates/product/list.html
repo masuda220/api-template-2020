@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_parts/layout :: head(~{::title})">
+  <title>商品の一覧</title>
+</head>
+<body>
+<section class="section">
+  <nav th:replace="~{_parts/nav :: nav}"></nav>
+  <hr>
+<div class="container">
+  <h3 class="title is-3">商品の一覧</h3>
+  <table class="table">
+    <thead>
+    <tr class="center aligned">
+      <th>商品番号</th>
+      <th>商品名</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <!--/*@thymesVar id="products" type="morecon.domain.model.product.Products"*/-->
+    <!--/*@thymesVar id="product" type="morecon.domain.model.product.Product"*/-->
+    <tr th:each="product : ${products.list()}">
+      <td th:text="${product.id()}">
+        1
+      </td>
+      <td>
+        <a href="detail.html" th:href="@{/products/{number}(number=${product.id()})}">
+        <span th:text="${product.name()}">
+          商品A
+        </span>
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <nav>
+    <a href="../cart/list.html" th:href="@{/cart}">カートを確認する</a>
+  </nav>
+</div>
+
+</section>
+</body>
+</html>

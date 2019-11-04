@@ -12,8 +12,6 @@ public class ProductCode {
 
     @Override
     public String toString() {
-        return "ProductCode{" +
-                "value=" + value +
-                '}';
+        return value;
     }
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_parts/layout :: head(~{::title})">
+  <title>注文確認</title>
+</head>
+<body>
+<section class="section">
+  <nav th:replace="~{_parts/nav :: nav}"></nav>
+  <hr>
+<div class="container">
+  <h3 class="title is-3">注文確認</h3>
+
+  <table class="table">
+    <thead>
+    <tr class="center aligned">
+      <th>商品番号</th>
+      <th>商品名</th>
+      <th>注文数</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <!--/*@thymesVar id="cartItem" type="morecon.domain.model.cart.CartItem"*/-->
+    <!--/*@thymesVar id="cartItems" type="morecon.domain.model.cart.CartItems"*/-->
+    <tr th:each="cartItem : ${cartItems.list()}">
+      <td th:text="${cartItem.product().id()}">1</td>
+      <td th:text="${cartItem.product().name()}">商品A</td>
+      <td th:text="${cartItem.quantity()}">10</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <form action="#">
+    <input type="submit" value="決済（未実装）"/>
+  </form>
+  <nav>
+    <a th:href="@{/products}">お買い物を続ける</a>
+  </nav>
+</div>
+</body>
+</html>
